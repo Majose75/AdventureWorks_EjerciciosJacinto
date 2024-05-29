@@ -35,7 +35,15 @@ namespace AdventureWorks.Controllers
             var consultaFinal = (elemento as IProductoQuery).dameProductos(consulta);
             return View(consultaFinal);
         }
+        public async Task<IActionResult> IndexEjercicio01()
+        {
 
+            var adventureWorks2016Context = _context.Products.Include(p => p.ProductModel).Include(p => p.ProductSubcategory).Include(p => p.SizeUnitMeasureCodeNavigation).Include(p => p.WeightUnitMeasureCodeNavigation);
+            var consulta = _context.Products;
+            var elemento = _factoria.dameInstancia(EnumeracionEjercicios.Ejercicio1);
+            var consultaFinal = (elemento as IProductoQuery).dameProductos(consulta);
+            return View(consultaFinal);
+        }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
